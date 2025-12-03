@@ -76,7 +76,7 @@ python run.py download_dialogue
 ```bash
 python run.py reasons illnesses symptoms
 ```
-When passing do not have to pass all three of `reasons`, `illnesses` and `symptoms`. Can choose to pass as many or as little as you want.
+When passing args, you do not have to pass all three of `reasons`, `illnesses` and `symptoms`. Can choose to pass as many or as little as you want.
 
 3. **Downloads research paper abstract data. Can configure parameters at `abstract/abstract_params.json`:**
 ```bash
