@@ -5,6 +5,7 @@ from semlib import Session
 import os
 from collections import Counter
 import asyncio
+import pandas as pd
 '''
 abstract_etl.py contains for extracting, transforming, and loading the drug repurposing candidates from the abstracts.
 '''
@@ -97,6 +98,6 @@ async def extract_candidates(abstracts):
         {r['abstract']}
         """.strip(),
     )
-    print(f'Example candidates: {extracted_candidates[0]}')
-
-    return extracted_candidates
+    df = pd.DataFrame(extracted_candidates)
+    df.to_csv("data/drug_candidates.csv", index=False)
+    return df
