@@ -6,7 +6,7 @@ import asyncio
 import sys
 import json
 
-async def dialogue_approach(targets, run_all):
+async def dialogue_pipeline(targets, run_all):
     '''
     Main logic to handle patient-doctor conversation dialogue approach.
     '''
@@ -25,7 +25,7 @@ async def dialogue_approach(targets, run_all):
     if run_all or 'symptoms' in targets:
         symptoms = await extract_symptoms(convos)
 
-async def abstracts_approach(targets, run_all):
+async def abstracts_pipeline(targets, run_all):
     '''
     Main logic to handle research abstract searching for drug repurposing approach.
     '''
@@ -54,11 +54,10 @@ async def main(targets):
     all_abstract_subargs = ['repurposing']
     run_abstract_pipeline = any(arg in targets for arg in all_abstract_subargs)
     
-    # Only call functions below if necessary
     if run_all or run_dialogue_pipeline:
-        await dialogue_approach(targets, run_all)
+        await dialogue_pipeline(targets, run_all)
     if run_all or run_abstract_pipeline:
-        await abstracts_approach(targets, run_all)
+        await abstracts_pipeline(targets, run_all)
 
 if __name__ == '__main__':
     targets = sys.argv[1:]
