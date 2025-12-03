@@ -54,36 +54,24 @@ Run the main script with **targets** to specify what to download and process.
 - **`clean`** - Deletes all built files. Reverts to clean repository.
 
 Patient-Doctor Dialogue Analysis:
-- **`download_dialogue`** – Downloads the patient-doctor dialogue CSV.  
-- **`reasons`** – Extracts visit reasons from dialogue data (**requires `python run.py download_dialogue` to have been run before to download data**).  
-- **`illnesses`** – Extracts family illnesses from dialogue data (**requires `python run.py download_dialogue` to have been run before to download data**).  
-- **`symptoms`** – Extracts symptoms from dialogue data (**requires `python run.py download_dialogue` to have been run before to load downdata**).
+- **`reasons`** – Extracts visit reasons from dialogue data.  
+- **`illnesses`** – Extracts family illnesses from dialogue data.  
+- **`symptoms`** – Extracts symptoms from dialogue data.
 
 PubMed Abstract Analysis:
-- **`download_abstracts`** – Downloads drug repurposing candidate CSV.  
-- **`repurposing`** – Extracts drug repurposing candidates data (**requires `python run.py download_abstracts` to have been run before to download data**).  
+- **`repurposing`** – Extracts drug repurposing candidates data.  
 
 Run these by running `py run.py [any combination of targets]`
 
 ### Examples
 
-1. **Downloads dialogues data:**
-```bash
-python run.py download_dialogue
-```
-
-2. **Extracts patient reasons for visits, family illnesses, and symptoms from patient-doctor dialogue data:**
+1. **Extracts patient reasons for visits, family illnesses, and symptoms from patient-doctor dialogue data:**
 ```bash
 python run.py reasons illnesses symptoms
 ```
 When passing args, you do not have to pass all three of `reasons`, `illnesses` and `symptoms`. Can choose to pass as many or as little as you want.
 
-3. **Downloads research paper abstract data. Can configure parameters at `abstract/abstract_params.json`:**
-```bash
-python run.py download_abstracts
-```
-
-4. **Extracts drug repurposing candidate data from research paper abstract data:**
+2. **Extracts drug repurposing candidate data from research paper abstract data:**
 ```bash
 python run.py repurposing
 ```

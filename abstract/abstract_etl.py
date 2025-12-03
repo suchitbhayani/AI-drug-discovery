@@ -15,7 +15,7 @@ session = Session(model="openai/gpt-4.1-mini", max_concurrency=MAX_CONCURRENCY)
 
 def download_abstracts(disease='Alzheimer', min_year='2022', max_year='2025', **kwargs):
     '''
-    Downloads the research paper abstracts with `disease` in the title/abstract and published from `min_year`-`max_year. 
+    Downloads the research paper abstracts with `disease` in the title/abstract and published from `min_year`-`max_year`. 
     Saves data in data/PubMed_abstracts.csv.
     '''
     Entrez.email = os.getenv("EMAIL")
@@ -86,7 +86,7 @@ def preprocess_abstracts(disease='Alzheimer', min_year='2022', max_year='2025', 
         header = next(csv_file)
         abstracts = [dict(zip(header, row, strict=False)) for row in csv_file]
 
-    print(f"Loaded {len(abstracts)} abstracts searching for `{disease} in the title from `f{min_year}` to `{max_year}`\n")
+    print(f"Loaded {len(abstracts)} abstracts searching for `{disease}` in the title from `{min_year}` to `{max_year}`\n")
     return abstracts
 
 async def extract_candidates(abstracts):
