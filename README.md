@@ -53,13 +53,13 @@ Run the main script with **targets** to specify what to download and process.
 - **`all`** – Runs all targets.
 - **`clean`** - Deletes all built files. Reverts to clean repository.
 
-Approach 1:
+Patient-Doctor Dialogue Analysis:
 - **`download_dialogue`** – Downloads the patient-doctor dialogue CSV.  
 - **`reasons`** – Extracts visit reasons from dialogue data (**requires `python run.py download_dialogue` to have been run before to download data**).  
 - **`illnesses`** – Extracts family illnesses from dialogue data (**requires `python run.py download_dialogue` to have been run before to download data**).  
 - **`symptoms`** – Extracts symptoms from dialogue data (**requires `python run.py download_dialogue` to have been run before to load downdata**).
 
-Approach 2:
+PubMed Abstract Analysis:
 - **`download_abstracts`** – Downloads drug repurposing candidate CSV.  
 - **`repurposing`** – Extracts drug repurposing candidates data (**requires `python run.py download_abstracts` to have been run before to download data**).  
 
