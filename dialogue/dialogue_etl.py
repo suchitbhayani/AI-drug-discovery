@@ -5,6 +5,7 @@ from semlib import Session
 import os
 from collections import Counter
 import asyncio
+import pandas as pd
 '''
 dialogue_etl.py contains for extracting, transforming, and loading the data from the patient-doctor conversations.
 '''
@@ -63,8 +64,9 @@ async def extract_reasons(convos):
         """.strip(),
     )
     print(f'Example reason: {extracted_reasons[0]}')
-
-    return extracted_reasons
+    df = pd.DataFrame(extracted_reasons)
+    df.to_csv("data/visit_reasons.csv", index=False)
+    return df
 
 async def extract_family_illnesses(convos):
     '''
@@ -78,7 +80,8 @@ async def extract_family_illnesses(convos):
         """.strip(),
     )
     print(f'Example family illness: {extracted_family_illnesses[0]}')
-
+    df = pd.DataFrame(extracted_family_illnesses)
+    df.to_csv("data/family_illnesses.csv", index=False)
     return extracted_family_illnesses
 
 async def extract_symptoms(convos):
@@ -93,5 +96,6 @@ async def extract_symptoms(convos):
         """.strip(),
     )
     print(f'Example symptom: {extracted_symptoms[0]}')
-
+    df = pd.DataFrame(extracted_symptoms)
+    df.to_csv("data/symptoms.csv", index=False)
     return extract_symptoms
