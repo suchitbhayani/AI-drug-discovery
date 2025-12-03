@@ -91,6 +91,10 @@ def preprocess_abstracts(disease='Alzheimer', min_year='2022', max_year='2025', 
     return abstracts
 
 async def extract_candidates(abstracts):
+    '''
+    Returns dataframe of extracted reasons for each patient visit.
+    Saves csv to data/drug_candidates.csv
+    '''
     extracted_candidates = await session.map(
         abstracts,
         template=lambda r: f"""

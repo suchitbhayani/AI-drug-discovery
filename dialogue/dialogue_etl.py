@@ -54,7 +54,8 @@ def preprocess_dialogue():
 
 async def extract_reasons(convos):
     '''
-    Returns list of extracted reasons for each patient visit.
+    Returns dataframe of extracted reasons for each patient visit.
+    Saves csv to data/visit_reasons.csv
     '''
     extracted_reasons = await session.map(
         convos,
@@ -70,7 +71,8 @@ async def extract_reasons(convos):
 
 async def extract_family_illnesses(convos):
     '''
-    Returns list of family illnesses for each patient visit.
+    Returns dataframe of family illnesses for each patient visit.
+    Saves csv to data/family_illnesses.csv
     '''
     extracted_family_illnesses = await session.map(
         convos,
@@ -86,7 +88,8 @@ async def extract_family_illnesses(convos):
 
 async def extract_symptoms(convos):
     '''
-    Returns list of extracted symptoms for each patient visit.
+    Returns dataframe of extracted symptoms for each patient visit.
+    Saves csv to data/symptoms.csv
     '''
     extracted_symptoms = await session.map(
         convos,
