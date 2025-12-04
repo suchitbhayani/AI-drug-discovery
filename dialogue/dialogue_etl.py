@@ -10,7 +10,7 @@ import pandas as pd
 dialogue_etl.py contains for extracting, transforming, and loading the data from the patient-doctor conversations.
 '''
 
-MAX_CONCURRENCY = 5
+MAX_CONCURRENCY = 3
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 session = Session(model="openai/gpt-4.1-mini", max_concurrency=MAX_CONCURRENCY)
 
@@ -60,7 +60,7 @@ async def extract_reasons(convos):
     extracted_reasons = await session.map(
         convos,
         template=lambda r: f"""
-        Extract the patient's chief complaint or reason for coming to the doctor. 1-2 word response only.
+        Extract the patient's chief complaint or reason for coming to the doctor. 1-2 word response only. No capitalization. If patient has no reasons, respond with none.
         {r['dialogue']}
         """.strip(),
     )
@@ -77,7 +77,7 @@ async def extract_family_illnesses(convos):
     extracted_family_illnesses = await session.map(
         convos,
         template=lambda r: f"""
-        Extract the any illness(es) that the patient and doctor are concerned about. Respond with only the illness(es) separated by commas. If none respond with none.
+        Extract the any illness(es) that the patient and doctor are concerned about. Respond with only the illness(es) separated by commas. No capitalization. If patient has no family illness, respond with none.
         {r['section_text']}
         """.strip(),
     )

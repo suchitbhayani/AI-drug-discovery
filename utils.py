@@ -37,3 +37,31 @@ def abstract_dataset_downloaded():
     '''
     abstract_fp = os.path.join("data", "PubMed_abstracts.csv")
     return os.path.isfile(abstract_fp)
+
+def visit_reasons_extracted():
+    '''
+    Determines if patient visit reasons data has been extracted.
+    '''
+    visit_reasons_fp = os.path.join("data", "visit_reasons.csv")
+    return os.path.isfile(visit_reasons_fp)
+
+def family_illness_extracted():
+    '''
+    Determines if patient family illness data has been extracted.
+    '''
+    family_illness_fp = os.path.join("data", "family_illnesses.csv")
+    return os.path.isfile(family_illness_fp)
+
+def symptoms_extracted():
+    '''
+    Determines if patient symptoms data has been extracted.
+    '''
+    symptoms_fp = os.path.join("data", "symptoms.csv")
+    return os.path.isfile(symptoms_fp)
+
+def drug_candidates_extracted():
+    '''
+    Determines if abstract drug repurposing data has been extracted.
+    '''
+    drug_candidates_fp = os.path.join("data", "drug_candidates.csv")
+    return os.path.isfile(drug_candidates_fp)

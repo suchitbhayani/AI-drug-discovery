@@ -10,7 +10,7 @@ import pandas as pd
 abstract_etl.py contains for extracting, transforming, and loading the drug repurposing candidates from the abstracts.
 '''
 
-MAX_CONCURRENCY = 5
+MAX_CONCURRENCY = 3
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 session = Session(model="openai/gpt-4.1-mini", max_concurrency=MAX_CONCURRENCY)
 
@@ -98,10 +98,11 @@ async def extract_candidates(abstracts):
     extracted_candidates = await session.map(
         abstracts,
         template=lambda r: f"""
-        Extract the drug repurposing candidates. Repond only with the candidates, separated by a comma and space. If none were mentioned, respond with 'none'
+        Extract the drug repurposing candidates. Repond only with the candidates, separated by a comma and space. If no candidates were mentioned, respond with none.
         {r['abstract']}
         """.strip(),
     )
+    print(f'Example reason: {extracted_candidates[0]}')
     df = pd.DataFrame(extracted_candidates)
     df.to_csv("data/drug_candidates.csv", index=False)
     return df

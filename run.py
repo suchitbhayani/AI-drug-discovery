@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-from utils import clean_files, dialogue_dataset_downloaded, abstract_dataset_downloaded
-from dialogue.dialogue_etl import download_dialogue, preprocess_dialogue, extract_reasons, extract_family_illnesses, extract_symptoms
-from abstract.abstract_etl import download_abstracts, preprocess_abstracts, extract_candidates
+from utils import *
+from dialogue.dialogue_etl import *
+from abstract.abstract_etl import *
 import asyncio
 import sys
 import json
@@ -18,12 +18,12 @@ async def dialogue_pipeline(targets, run_all):
     convos = preprocess_dialogue()
 
     # Data analysis
-    if run_all or 'reasons' in targets:
-        visit_reasons = await extract_reasons(convos)
-    if run_all or 'illnesses' in targets:
-        family_illnesses = await extract_family_illnesses(convos)
-    if run_all or 'symptoms' in targets:
-        symptoms = await extract_symptoms(convos)
+    if not visit_reasons_extracted() and (run_all or 'reasons' in targets):
+        visit_reasons_df = await extract_reasons(convos)
+    if not family_illness_extracted() and (run_all or 'illnesses' in targets):
+        family_illnesses_df = await extract_family_illnesses(convos)
+    if not symptoms_extracted() and (run_all or 'symptoms' in targets):
+        symptoms_df = await extract_symptoms(convos)
 
 async def abstracts_pipeline(targets, run_all):
     '''
@@ -41,8 +41,8 @@ async def abstracts_pipeline(targets, run_all):
     abstracts = preprocess_abstracts(**data_params)
 
     # Data analysis
-    if run_all or 'repurposing' in targets:
-        repurposing_candidates = await extract_candidates(abstracts)
+    if not drug_candidates_extracted() and (run_all or 'repurposing' in targets):
+        repurposing_candidates_df = await extract_candidates(abstracts)
 
 async def main(targets):
     if 'clean' in targets:
