@@ -63,7 +63,7 @@ Patient-Doctor Dialogue Analysis:
 PubMed Abstract Analysis:
 - **`repurposing`** – Extracts drug repurposing candidates data.  
 
-Run these by running `py run.py [any combination of targets]`
+Run these by running `python run.py [any combination of targets]`
 
 ### Examples
 
