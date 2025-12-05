@@ -43,6 +43,8 @@ EMAIL=your_email_here
 
 `dialogue` directory has code for the patient-doctor conversation data approach. There are currently no parameters to configure for this approach.
 
+`viz` directory has the data visualizations and analysis in a jupyter notebook.
+
 ---
 
 ## Usage 
