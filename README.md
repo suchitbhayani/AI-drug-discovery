@@ -2,6 +2,7 @@
 
 This project provides scripts to **download and process patient-doctor dialogue and medical paper abstract datasets** related to drug discovery. The code automatically stores CSV files in the `data/` directory and performs ETL (Extract, Transform, Load) operations on them.  
 
+For data visualizations and findings, see `viz/eda.ipynb`.
 ---
 
 ## Setup
@@ -66,11 +67,10 @@ Run these by running `py run.py [any combination of targets]`
 
 ### Examples
 
-1. **Extracts patient reasons for visits, family illnesses, and symptoms from patient-doctor dialogue data:**
+1. **Extracts patient reasons for visits and family illnesses from patient-doctor dialogue data:**
 ```bash
-python run.py reasons illnesses symptoms
+python run.py reasons illnesses 
 ```
-When passing args, you do not have to pass all three of `reasons`, `illnesses` and `symptoms`. Can choose to pass as many or as little as you want.
 
 2. **Extracts drug repurposing candidate data from research paper abstract data:**
 ```bash
