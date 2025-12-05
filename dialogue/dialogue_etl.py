@@ -101,4 +101,21 @@ async def extract_symptoms(convos):
     print(f'Example symptom: {extracted_symptoms[0]}')
     df = pd.DataFrame(extracted_symptoms)
     df.to_csv("data/symptoms.csv", index=False)
-    return extract_symptoms
+    return extracted_symptoms
+
+async def extract_medications(convos):
+    '''
+    Returns dataframe of extracted medications currently taking for each patient visit.
+    Saves csv to data/medications.csv
+    '''
+    extracted_medications = await session.map(
+        convos,
+        template=lambda r: f"""
+        Extract the medications the patient is currently taking. Respond with only the medication(s) separated by commas. 1-2 words for each medication. If patient is taking no medication, respond with none.
+        {r['section_text']}
+        """.strip(),
+    )
+    print(f'Example medication: {extracted_medications[0]}')
+    df = pd.DataFrame(extracted_medications)
+    df.to_csv("data/medications.csv", index=False)
+    return extracted_medications

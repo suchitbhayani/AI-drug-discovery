@@ -65,3 +65,10 @@ def drug_candidates_extracted():
     '''
     drug_candidates_fp = os.path.join("data", "drug_candidates.csv")
     return os.path.isfile(drug_candidates_fp)
+
+def medications_extracted():
+    '''
+    Determines if abstract patient current medication data has been extracted.
+    '''
+    drug_candidates_fp = os.path.join("data", "medications.csv")
+    return os.path.isfile(drug_candidates_fp)

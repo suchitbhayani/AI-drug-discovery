@@ -57,6 +57,7 @@ Patient-Doctor Dialogue Analysis:
 - **`reasons`** – Extracts visit reasons from dialogue data.  
 - **`illnesses`** – Extracts family illnesses from dialogue data.  
 - **`symptoms`** – Extracts symptoms from dialogue data.
+- **`medications`** – Extracts medications the patient is currently taking from dialogue data.
 
 PubMed Abstract Analysis:
 - **`repurposing`** – Extracts drug repurposing candidates data.  

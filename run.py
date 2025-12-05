@@ -10,11 +10,11 @@ async def dialogue_pipeline(targets, run_all):
     '''
     Main logic to handle patient-doctor conversation dialogue approach.
     '''
-    # Download data
+    # Download data, saves to csv
     if not dialogue_dataset_downloaded():
         download_dialogue()
 
-    # Preprocess data, required step for analysis
+    # Preprocess data, reads from csv
     convos = preprocess_dialogue()
 
     # Data analysis
@@ -24,6 +24,8 @@ async def dialogue_pipeline(targets, run_all):
         family_illnesses_df = await extract_family_illnesses(convos)
     if not symptoms_extracted() and (run_all or 'symptoms' in targets):
         symptoms_df = await extract_symptoms(convos)
+    if not medications_extracted() and (run_all or 'medications' in targets):
+        medications_df = await extract_medications(convos)
 
 async def abstracts_pipeline(targets, run_all):
     '''
@@ -33,11 +35,11 @@ async def abstracts_pipeline(targets, run_all):
     with open('abstract/abstract_params.json') as fh:
         data_params = json.load(fh)
         
-    # Download data
+    # Download data, saves to csv
     if not abstract_dataset_downloaded():
         download_abstracts(**data_params)
 
-    # Preprocess data, required step for analysis
+    # Preprocess data, loads to csv
     abstracts = preprocess_abstracts(**data_params)
 
     # Data analysis
@@ -49,7 +51,7 @@ async def main(targets):
         clean_files()
 
     run_all = 'all' in targets
-    all_dialogue_subargs = ['reasons', 'illnesses', 'symptoms']
+    all_dialogue_subargs = ['reasons', 'illnesses', 'symptoms', 'medications']
     run_dialogue_pipeline = any(arg in targets for arg in all_dialogue_subargs)
     all_abstract_subargs = ['repurposing']
     run_abstract_pipeline = any(arg in targets for arg in all_abstract_subargs)
