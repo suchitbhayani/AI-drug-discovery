@@ -1,5 +1,18 @@
 # AI-drug-discovery
 
+## Project Overview
+
+This is a capstone project for **UCSD Data Science (DSC 180A)** in Domain B23, mentored by Murali Krishnam from Solix Technologies. The project focuses on **AI-driven drug discovery using natural language processing (NLP)** techniques to analyze medical literature and patient-doctor conversations.
+
+**Goal:** Combine patient dialogue analysis with medical literature mining to identify potential drug repurposing candidates and extract meaningful clinical insights for drug discovery research, with a specific focus on Alzheimer's disease treatment.
+
+**Approach:** The project uses neuro-symbolic AI techniques, semantic analysis, and large language models to:
+- Extract clinical information from patient-doctor dialogues
+- Mine PubMed abstracts for drug repurposing opportunities
+- Identify relationships between symptoms, medications, and potential treatments
+
+---
+
 This project provides scripts to **download and process patient-doctor dialogue and medical paper abstract datasets** related to drug discovery. The code automatically stores CSV files in the `data/` directory and performs ETL (Extract, Transform, Load) operations on them.  
 
 For data visualizations and findings, see `viz/eda.ipynb`.
