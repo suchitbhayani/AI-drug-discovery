@@ -78,3 +78,31 @@ python run.py reasons illnesses
 ```bash
 python run.py repurposing
 ```
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue: ModuleNotFoundError**
+- Solution: Ensure you've activated the virtual environment and installed all dependencies with `pip install -r requirements.txt`
+
+**Issue: OpenAI API errors**
+- Solution: Verify your API key is correctly set in the `.env` file and has sufficient credits
+
+**Issue: PubMed API rate limiting**
+- Solution: The script includes built-in delays. If you still encounter issues, try running smaller batches or contact PubMed about rate limits
+
+**Issue: Empty CSV files**
+- Solution: Check your internet connection and API credentials. Ensure the target datasets are available
+
+---
+
+## Contributing
+
+This is a capstone project for UCSD Data Science (DSC 180A). Contributions are welcome from project team members.
+
+---
+
+## License
+
+This project is for educational purposes as part of UCSD coursework.
