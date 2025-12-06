@@ -3,6 +3,26 @@
 This project provides scripts to **download and process patient-doctor dialogue and medical paper abstract datasets** related to drug discovery. The code automatically stores CSV files in the `data/` directory and performs ETL (Extract, Transform, Load) operations on them.  
 
 For data visualizations and findings, see `viz/eda.ipynb`.
+
+---
+
+## Data Sources
+
+### Patient-Doctor Dialogue Data
+- **Source:** Medical dialogue datasets accessed via automated API calls
+- **Content:** Conversations between patients and doctors including visit reasons, symptoms, family medical history, and current medications
+- **Access Method:** Automatically downloaded and processed via the scripts in the `dialogue/` directory
+- **Storage:** Processed data stored as CSV files in the `data/` directory
+
+### PubMed Abstract Data
+- **Source:** PubMed Central API (National Center for Biotechnology Information)
+- **Content:** Medical research paper abstracts related to drug discovery and Alzheimer's disease
+- **Access Method:** Queries via PubMed E-utilities API using semantic search
+- **Configuration:** Search parameters configurable in `abstract/abstract_params.json`
+- **Storage:** Processed drug candidates and analysis results stored in `data/drug_candidates.csv`
+
+**Note:** Raw data files are not included in this repository. The scripts download and process data automatically when targets are run. All processed outputs are saved to the `data/` directory, which is gitignored to avoid committing large datasets.
+
 ---
 
 ## Setup
@@ -14,7 +34,6 @@ cd AI_drug_discovery
 ```
 
 2. **Create and activate a virtual environment**
-
 ```bash
 # Create a virtual environment named 'env'
 python -m venv env
@@ -24,13 +43,11 @@ source env/Scripts/activate
 ```
 
 3. **Install dependencies**
-
 ```bash
 pip install -r requirements.txt
 ```
 
 4. **Create a .env file at the root of the project containing your API key and email**
-
 ```ini
 OPENAI_API_KEY=your_openai_api_key_here
 EMAIL=your_email_here
