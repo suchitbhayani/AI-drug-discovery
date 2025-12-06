@@ -49,7 +49,7 @@ EMAIL=your_email_here
 
 ## Usage 
 
-Run the main script with **targets** to specify what to download and process.
+Run the main `run.py` script with **targets** to specify what to download and process.
 
 ### Targets
 
