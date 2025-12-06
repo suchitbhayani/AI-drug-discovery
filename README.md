@@ -57,13 +57,13 @@ Run the main script with **targets** to specify what to download and process.
 - **`clean`** - Deletes all built files. Reverts to clean repository.
 
 Patient-Doctor Dialogue Analysis:
-- **`reasons`** – Extracts visit reasons from dialogue data.  
-- **`illnesses`** – Extracts family illnesses from dialogue data.  
-- **`symptoms`** – Extracts symptoms from dialogue data.
-- **`medications`** – Extracts medications the patient is currently taking from dialogue data.
+- **`reasons`** – Extracts visit reasons from dialogue data. Saves csv to `data/visit_reasons.csv`
+- **`illnesses`** – Extracts family illnesses from dialogue data. Saves csv to `data/family_illnesses.csv`
+- **`symptoms`** – Extracts symptoms from dialogue data. Saves csv to `data/symptoms.csv`
+- **`medications`** – Extracts medications the patient is currently taking from dialogue data. Saves csv to `data/medications.csv`
 
 PubMed Abstract Analysis:
-- **`repurposing`** – Extracts drug repurposing candidates data.  
+- **`repurposing`** – Extracts drug repurposing candidates data. Saves csv to `data/drug_candidates.csv`
 
 Run these by running `python run.py [any combination of targets]`
 
