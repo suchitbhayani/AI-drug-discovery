@@ -98,7 +98,7 @@ async def extract_candidates(abstracts):
     extracted_candidates = await session.map(
         abstracts,
         template=lambda r: f"""
-        Extract the drug repurposing candidates. Repond only with the candidates, separated by a comma and space. If no candidates were mentioned, respond with none.
+        Extract the drug repurposing candidates. Repond only with the candidate(s), separated by a comma and space. If no candidates were mentioned, respond with none.
         {r['abstract']}
         """.strip(),
     )

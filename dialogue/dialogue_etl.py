@@ -60,7 +60,7 @@ async def extract_reasons(convos):
     extracted_reasons = await session.map(
         convos,
         template=lambda r: f"""
-        Extract the patient's chief complaint or reason for coming to the doctor. 1-2 word response only. No capitalization. If patient has no reasons, respond with none.
+        Extract the patient's chief complaint or reason for coming to the doctor. 1-2 word response only. If patient has no reasons, respond with none.
         {r['dialogue']}
         """.strip(),
     )
@@ -77,7 +77,7 @@ async def extract_family_illnesses(convos):
     extracted_family_illnesses = await session.map(
         convos,
         template=lambda r: f"""
-        Extract the any illness(es) that the patient and doctor are concerned about. Respond with only the illness(es) separated by commas. No capitalization. If patient has no family illness, respond with none.
+        Extract the any illness(es) that the patient and doctor are concerned about. Respond with only the illness(es) separated by commas. If patient has no family illness, respond with none.
         {r['section_text']}
         """.strip(),
     )
